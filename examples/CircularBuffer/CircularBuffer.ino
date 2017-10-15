@@ -45,23 +45,6 @@ void setup() {
 	Serial.print(circularBuffer.Last());
 	Serial.print("\t\tData:");
 	printArray(circularBuffer.ToArray(), circularBuffer.Count(), ',');
-
-	//for (int iCount = 10; iCount <= 25; iCount++)
-	//{
-	//	circularBuffer.Insert(iCount);
-
-	//	Serial.print("Count:");
-	//	Serial.print(circularBuffer.Count());
-	//	Serial.print("\tData:");
-	//	printArray(circularBuffer.Debug(), 10, ',');
-	//}
-
-
-
-	//Serial.println("");
-	//Serial.println("Get last 5 invert");
-	////int* dataInverted = circularBuffer.GetInverted(M);
-	//printArray(dataInverted, M, ',');
 }
 
 void loop() {
