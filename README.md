@@ -7,7 +7,7 @@ Más información https://www.luisllamas.es/libreria-arduino-circular-buffer/
 ### Constructor
 El Buffer Circular se instancia a través de su constructor que recibe el tamaño del Buffer como único parámetro.
 ```c++
-CircularBuffer<int> circularBuffer(capacity);
+CircularBuffer<T> circularBuffer(capacity);
 ```
 
 ### Obtener elementos
@@ -83,3 +83,47 @@ circularBuffer.FromArray(items, numItems);
 ## Ejemplos
 La librería Circular Buffer incluye los siguientes ejemplos para ilustrar su uso.
 * CircularBuffer: Ejemplo de uso para variables integer.
+```c++
+#include "CircularBufferLib.h"
+
+void printArray(int* x, int length, char separator)
+{
+	for (int iCount = 0; iCount < length-1; iCount++)
+	{
+		Serial.print(x[iCount]);
+		Serial.print(separator);
+	}
+	Serial.print(x[length - 1]);
+	Serial.println();
+}
+
+
+CircularBuffer<int> circularBuffer(10);
+void setup() {
+	Serial.begin(115200);
+
+	Serial.println("Store 0 - 14");
+	for (int iCount = 1; iCount <= 25; iCount++)
+		circularBuffer.Add(iCount);
+
+	for (int iCount = 1; iCount <= 2; iCount++)
+	{
+		circularBuffer.ExtractFirst();
+		circularBuffer.ExtractFirst();
+
+		circularBuffer.Add(iCount + 100);
+	}
+
+	Serial.print("Count:");
+	Serial.print(circularBuffer.Count());
+	Serial.print("\t\tFirst:");
+	Serial.print(circularBuffer.First());
+	Serial.print("\t\tLast:");
+	Serial.print(circularBuffer.Last());
+	Serial.print("\t\tData:");
+	printArray(circularBuffer.ToArray(), circularBuffer.Count(), ',');
+}
+
+void loop() {
+}
+```
