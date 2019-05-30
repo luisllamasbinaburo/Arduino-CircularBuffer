@@ -11,7 +11,7 @@ CircularBuffer	KEYWORD1
 # Methods and Functions (KEYWORD2)
 #######################################
 Last	KEYWORD2
-First KEYWORD2
+First	KEYWORD2
 Add	KEYWORD2
 Insert	KEYWORD2
 RemoveFirst	KEYWORD2
